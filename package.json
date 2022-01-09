@@ -1,0 +1,25 @@
+{
+  "name": "expressFileUploadWE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon src/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gopala1995/expressFileUploadWE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gopala1995/expressFileUploadWE/issues"
+  },
+  "homepage": "https://github.com/gopala1995/expressFileUploadWE#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5",
+    "multer": "^1.4.4"
+  }
+}
