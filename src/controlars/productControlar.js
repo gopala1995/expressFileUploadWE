@@ -1,8 +1,7 @@
 const express = require("express")
-const path = require("path")
+const multer = require("multer")
 
-
-
+const upload = require("../middlewere/upload")
 const router = express.Router()
 
 const Product = require("../models/product.model")
@@ -13,8 +12,25 @@ router.get("",async(req,res)=>{
     return res.send(products)
 })
 
-router.post("",async(req,res)=>{
-    const product = await Product.create(req.body)
+router.post("/single",upload.single("image_urls"),async(req,res)=>{
+  
+    const product = await Product.create({
+      name:req.body.name,
+      price:req.body.price,
+      image_url:req.body.path
+      
+    })
     return res.send(product)
 })
+
+router.post("/multiple",upload.any("image_urls"),async(req,res)=>{
+  const filePath = req.files.map((file)=>file.path);
+  const product = await Product.create({
+    name:req.body.name,
+    price:req.body.price,
+    image_url:filePath
+  })
+  return res.send(product)
+})
+
 module.exports = router
