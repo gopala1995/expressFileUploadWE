@@ -13,11 +13,11 @@ router.get("",async(req,res)=>{
 })
 
 router.post("/single",upload.single("image_urls"),async(req,res)=>{
-  
+     console.log(req);
     const product = await Product.create({
       name:req.body.name,
       price:req.body.price,
-      image_url:req.body.path
+      image_url:req.file.path
       
     })
     return res.send(product)
